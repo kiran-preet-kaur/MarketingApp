@@ -3,7 +3,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
 
-import Home from './modules/Home/Home';
+import Home from './modules/Home/home';
+import Navbar from './modules/Header/HeaderContainer';
+import Login from './modules/Login/loginContainer'
+import Contact from './modules/ContactForm/contact'
 
 const App = () => {
   return (
@@ -14,6 +17,8 @@ const App = () => {
           <div className='container' style={{ paddingTop: '25px' }}>
             <Switch>
               <Route exact path='/' component={Home} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/contact-us' component={Contact} />
             </Switch>
           </div>
         </div>

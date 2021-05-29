@@ -16,6 +16,7 @@ app.use(express.json({ extended: false }))
 //Define routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/login', require('./routes/login'));
+app.use('/api/mail', require('./routes/mail'));
 
 const PORT = process.env.PORT || 5000;
 
