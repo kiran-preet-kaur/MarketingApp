@@ -21,17 +21,12 @@ class navbar extends Component {
           <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
             <Container>
               <LinkContainer to='/'>
-                <Navbar.Brand><i className="fab fa-apple"></i></Navbar.Brand>
+                <Navbar.Brand>Lumen</Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
-              <Navbar.Collapse id='basic-navbar-nav'>
+              <Navbar.Collapse className="justify-content-end" id='basic-navbar-nav'>
                 {/* <Route render={({ history }) => <SearchBox history={history} />} /> */}
                 <Nav className='ml-auto'>
-                  <LinkContainer to='/specs'>
-                    <Nav.Link>
-                      Tech Specs
-                    </Nav.Link>
-                  </LinkContainer>
                   <LinkContainer to='/contact-us'>
                     <Nav.Link>
                       Contact Us

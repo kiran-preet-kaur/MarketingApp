@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Form, Button, Container } from 'react-bootstrap';
 
-class Contact extends Component {
+class Subscribe extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
@@ -26,25 +26,22 @@ class Contact extends Component {
     })
   }
 
-  handleContentChange = (event) => {
-    this.setState({
-      content: event.target.value
-    })
-  }
-
   handleFormSubmit = async (event) => {
     event.preventDefault();
-    let { name, email, content } = this.state;
-    if (name == '' || email == '' || content == '') {
+    let { name, email } = this.state;
+    if (name == '' || email == '') {
       this.setState({ err: 'Please fill in all fields' });
     } else {
-      const res = await axios.post('/api/mail', {
-        name, email, content
+      const res = await axios.post('/api/mail/subscribe', {
+        name, email
       });
-      if (res.status == 200) {
-        this.setState({ msg: 'Your message has been sent!', err: null })
-      } else {
-        this.setState({ err: 'Error in sending message' });
+      if (res.status == 200 && res.data.msg != "User already subscribed!") {
+        this.setState({ msg: "You're subscribed!", err: null })
+      } else if (res.data.msg == "User already subscribed!") {
+        this.setState({ err: 'You are already subscribed' });
+      }
+      else {
+        this.setState({ err: 'Error in subscription. Please try again!' });
       }
     }
 
@@ -54,7 +51,7 @@ class Contact extends Component {
     const { msg, err } = this.state;
     return (
       <Container fluid style={{ height: '80vh' }}>
-        <h1 className="text-center">Contact Us!</h1>
+        <div className="text-center">Get notified when the product is in stock!</div>
         <Form onSubmit={this.handleFormSubmit} className="container" >
           <Form.Group controlId="exampleForm.ControlInput1" className="mb-2">
             <Form.Label>Name</Form.Label>
@@ -63,10 +60,6 @@ class Contact extends Component {
           <Form.Group controlId="exampleForm.ControlInput1" className="mb-2">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="name@example.com" onChange={this.handleEmailChange} />
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlTextarea1" className="mb-2">
-            <Form.Label>Message</Form.Label>
-            <Form.Control as="textarea" rows={3} onChange={this.handleContentChange} />
           </Form.Group>
           <Button variant="dark" type="submit" className="mt-2">
             Submit
@@ -81,4 +74,4 @@ class Contact extends Component {
 
 
 
-export default Contact
+export default Subscribe;

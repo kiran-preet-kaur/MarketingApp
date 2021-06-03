@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Loader from '../../layouts/Loader';
 import { Redirect } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 
 class Login extends Component {
     constructor(...args) {
@@ -56,23 +56,28 @@ class Login extends Component {
     LoginForm = () => {
         return (
             <>
-                <h1 className="text-center mb-2">Login Form</h1>
+                <h1 className="text-center mb-5">Login Form</h1>
                 <Form onSubmit={this.handleLogin} className="container">
-                    <Form.Group controlId="formBasicEmail" className="mb-2" >
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onChange={this.handleEmailChange} />
+                    <Form.Group as={Row} controlId="formBasicEmail" className="mb-2" >
+                        <Form.Label column sm="2">Email address</Form.Label>
+                        <Col sm="10">
+                            <Form.Control type="email" placeholder="abc@xyz.com" onChange={this.handleEmailChange} />
+                        </Col>
                     </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword" className="mb-2">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange} />
+                    <Form.Group as={Row} controlId="formBasicPassword" className="mb-2">
+                        <Form.Label column sm="2">Password</Form.Label>
+                        <Col sm="10">
+                            <Form.Control type="password" placeholder="password" onChange={this.handlePasswordChange} />
+                        </Col>
                     </Form.Group>
-
-                    <Button variant="primary" type="submit" className="mt-2 mb-2">
-                        Submit
-                        </Button>
+                    <div className="text-center">
+                        <Button variant="primary" type="submit" className="mt-2 mb-2">
+                            Submit
+                    </Button>
+                    </div>
                 </Form>
-                <div className="container">Don't have an account? <span onClick={this.showRegisterForm}>Register</span></div>
+                <div className="text-center container mt-2">Don't have an account? <span onClick={this.showRegisterForm}>Register</span></div>
             </>
         )
     }
@@ -104,7 +109,7 @@ class Login extends Component {
     RegisterForm = () => {
         return (
             <>
-                <div>Back to <span onClick={this.showLoginForm}>Login</span></div>
+                <div onClick={this.showLoginForm}><i class="fa-solid fa-chevron-left"></i>Back to Login</div>
                 <h1 className="text-center mb-2">Register Form</h1>
                 <Form onSubmit={this.handleRegister}>
                     <Form.Group controlId="formBasicEmail" className="mb-2">
@@ -165,9 +170,9 @@ class Login extends Component {
         else if (this.state.loading && !this.props.error) {
             return <Loader />
         } else {
-            return (<div style={{ maxWidth: '400px' }}>
+            return (<Container fluid style={{ height: '80vh' }}>
                 {this.state.screen === 'Login' ? this.LoginForm() : this.RegisterForm()}
-            </div>
+            </Container>
             );
         }
     }
