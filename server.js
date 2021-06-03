@@ -6,9 +6,9 @@ const app = express();
 //Connect to DB
 connectDB();
 
-app.get('/', (req, res) => {
-  res.json({ "msg": "Welcome to my shopping App" });
-})
+// app.get('/', (req, res) => {
+//   res.json({ "msg": "Welcome to my shopping App" });
+// })
 
 // Init Middleware to read request body
 app.use(express.json({ extended: false }))
