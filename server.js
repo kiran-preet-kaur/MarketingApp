@@ -1,4 +1,3 @@
-process.env.NODE_ENV = 'production';
 const express = require('express');
 const connectDB = require('./config/db');
 const path = require('path');
@@ -19,6 +18,9 @@ app.use(express.json({ extended: false }))
 app.use('/api/users', require('./routes/users'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/mail', require('./routes/mail'));
+
+console.log(process.env.NODE_ENV);
+console.log(process.env.PORT);
 
 //Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
