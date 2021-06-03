@@ -71,6 +71,7 @@ class Login extends Component {
                             <Form.Control type="password" placeholder="password" onChange={this.handlePasswordChange} />
                         </Col>
                     </Form.Group>
+                    {this.props.error && <div className="text-danger mt-2">{this.props.error}</div>}
                     <div className="text-center">
                         <Button variant="primary" type="submit" className="mt-2 mb-2">
                             Submit
@@ -172,6 +173,7 @@ class Login extends Component {
         } else {
             return (<Container fluid style={{ height: '80vh' }}>
                 {this.state.screen === 'Login' ? this.LoginForm() : this.RegisterForm()}
+
             </Container>
             );
         }

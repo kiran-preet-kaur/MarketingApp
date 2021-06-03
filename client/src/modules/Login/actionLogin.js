@@ -20,8 +20,8 @@ export const getLogin = (email, password) => async dispatch => {
     dispatch(getUser());
   } catch (err) {
     dispatch({
-      type: 'LOGIN_ERROR',
-      payload: err.response.statusText
+      type: 'LOGIN_FAIL',
+      payload: err.response.data.msg
     });
   }
 }
@@ -74,8 +74,8 @@ export const registerUser = (name, email, password, phone) => async dispatch => 
     dispatch(getUser());
   } catch (err) {
     dispatch({
-      type: 'LOGIN_ERROR',
-      payload: err.response.statusText
+      type: 'LOGIN_FAIL',
+      payload: err.response.data
     });
   }
 }
