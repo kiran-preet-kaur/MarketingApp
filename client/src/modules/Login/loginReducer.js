@@ -13,7 +13,8 @@ const loginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                isAuthenticated: true
+                isAuthenticated: true,
+                error: null
             };
         case 'REGISTER_FAIL':
         case 'AUTH_ERROR':

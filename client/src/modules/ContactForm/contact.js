@@ -36,7 +36,7 @@ class Contact extends Component {
     event.preventDefault();
     let { name, email, content } = this.state;
     if (name == '' || email == '' || content == '') {
-      this.setState({ err: 'Please fill in all fields' });
+      this.setState({ err: 'Please fill in all fields', msg: null });
     } else {
       const res = await axios.post('/api/mail', {
         name, email, content
