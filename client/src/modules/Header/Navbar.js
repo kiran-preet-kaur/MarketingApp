@@ -27,6 +27,16 @@ class navbar extends Component {
               <Navbar.Collapse className="justify-content-end" id='basic-navbar-nav'>
                 {/* <Route render={({ history }) => <SearchBox history={history} />} /> */}
                 <Nav className='ml-auto'>
+                <LinkContainer to='/specs'>
+                    <Nav.Link>
+                      Specs
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/inclusions'>
+                    <Nav.Link>
+                      Inclusions
+                    </Nav.Link>
+                  </LinkContainer>
                   <LinkContainer to='/contact-us'>
                     <Nav.Link>
                       Contact Us
