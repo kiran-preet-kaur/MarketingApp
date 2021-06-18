@@ -21,7 +21,12 @@ class navbar extends Component {
           <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
             <Container>
               <LinkContainer to='/'>
-                <Navbar.Brand>Lumen</Navbar.Brand>
+                <Navbar.Brand><img
+        alt=""
+        src="/images/lumenLogo.png"
+        height="30"
+        className="d-inline-block align-top"
+      /></Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
               <Navbar.Collapse className="justify-content-end" id='basic-navbar-nav'>
@@ -32,9 +37,9 @@ class navbar extends Component {
                       Specs
                     </Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to='/inclusions'>
+                  <LinkContainer to='/lumen'>
                     <Nav.Link>
-                      Inclusions
+                      Lumen
                     </Nav.Link>
                   </LinkContainer>
                   <LinkContainer to='/contact-us'>
